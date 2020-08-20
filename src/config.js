@@ -9,4 +9,7 @@ module.exports = {
   aws: {
     s3Bucket: process.env.AWS_S3_BUCKET,
   },
+  app: {
+    responderFunctionName: process.env.APP_RESPONDER_FUNCTION_NAME,
+  },
 };

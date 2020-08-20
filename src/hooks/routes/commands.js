@@ -29,12 +29,11 @@ router.post("/", async (req, res) => {
   }
   const options = req.body.text.split(" ");
   const command = options[0];
-  const responderFunctionName = "slackbot-better-mention-tool-responder";
   if (command === "list") {
     const lambda = new aws.Lambda();
     await lambda
       .invokeAsync({
-        FunctionName: responderFunctionName,
+        FunctionName: config.app.responderFunctionName,
         InvokeArgs: JSON.stringify(req.body),
       })
       .promise();
@@ -48,7 +47,7 @@ router.post("/", async (req, res) => {
     const lambda = new aws.Lambda();
     await lambda
       .invokeAsync({
-        FunctionName: responderFunctionName,
+        FunctionName: config.app.responderFunctionName,
         InvokeArgs: JSON.stringify(req.body),
       })
       .promise();
